@@ -1,4 +1,4 @@
-package com.example.mainproject.domain
+package com.example.mainproject.domain.callback
 
 import com.example.mainproject.data.model.CheckListModel
 

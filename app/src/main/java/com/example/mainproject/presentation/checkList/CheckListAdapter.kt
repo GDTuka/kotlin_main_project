@@ -3,13 +3,10 @@ package com.example.mainproject.presentation.checkList
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mainproject.R
 import com.example.mainproject.data.model.CheckListModel
-import com.example.mainproject.domain.AdapterCallBack
-import org.w3c.dom.Text
 
 class CheckListAdapter(val listener: CheckListFragment) : RecyclerView.Adapter<CheckListAdapter.CheckListItem>() {
 
@@ -26,9 +23,6 @@ class CheckListAdapter(val listener: CheckListFragment) : RecyclerView.Adapter<C
     }
 
     override fun onBindViewHolder(holder: CheckListItem, position: Int) {
-        holder.itemView.setOnClickListener{
-            listener.onClick(items[position])
-        }
         holder.bind(items[position])
     }
 
