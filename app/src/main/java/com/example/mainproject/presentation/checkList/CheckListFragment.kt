@@ -8,15 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.mainproject.R
+import com.example.mainproject.data.db.db.CheckListDB
 import com.example.mainproject.data.model.CheckListModel
-import com.example.mainproject.data.model.CheckListPoints
-import com.example.mainproject.domain.AdapterCallBack
+import com.example.mainproject.domain.callback.AdapterCallBack
 import com.example.mainproject.presentation.mainchecklistpage.MainCheckListPageFragment
-import com.example.mainproject.presentation.mainchecklistpage.MainCheckListPageVM
 import kotlinx.android.synthetic.main.fragment_checklist.*
 
 
-class CheckListFragment : Fragment(),AdapterCallBack{
+class CheckListFragment : Fragment() {
 
 
 
@@ -25,6 +24,12 @@ class CheckListFragment : Fragment(),AdapterCallBack{
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_checklist, container, false)
+
+        val application = requireNotNull(this.activity).application
+        val dataSource = CheckListDB.getInstance(application).CheckListDBDao()
+        val viewModelFactory = CheckListViewModelFactory(dataSource,application)
+        val vm = ViewModelProvider(this,viewModelFactory).get(CheckListViewModel::class.java)
+        vm.onStartTracking()
         return view
     }
 
@@ -32,7 +37,8 @@ class CheckListFragment : Fragment(),AdapterCallBack{
         super.onViewCreated(view, savedInstanceState)
 
         val vm = ViewModelProvider(this).get(CheckListViewModel::class.java)
-
+        vm.testData()
+        testView.text = vm.testData
         val adapter = CheckListAdapter(this)
 
         checkListRecyclerView.adapter = adapter
@@ -41,13 +47,6 @@ class CheckListFragment : Fragment(),AdapterCallBack{
             adapter.items += vm.addCheckList()
         }
 
-    }
-    override fun onClick(model: CheckListModel) {
-        var bundle = Bundle()
-        bundle.putSerializable("data",model)
-        val fragment = MainCheckListPageFragment()
-        fragment.arguments = bundle
-        parentFragmentManager.beginTransaction().replace(R.id.container, fragment).commit()
     }
 
 }
