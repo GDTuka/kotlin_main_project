@@ -1,10 +1,9 @@
 package com.example.mainproject.presentation
 
-import android.content.Intent
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.mainproject.R
-import com.example.mainproject.data.model.CheckListModel
 import com.example.mainproject.presentation.checkList.CheckListFragment
 import com.example.mainproject.presentation.profile.ProfileFragment
 import kotlinx.android.synthetic.main.activity_main.*

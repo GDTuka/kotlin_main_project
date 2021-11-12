@@ -3,12 +3,13 @@ package com.example.mainproject.presentation.checkList
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mainproject.R
 import com.example.mainproject.data.model.CheckListModel
 
-class CheckListAdapter(val listener: CheckListFragment) : RecyclerView.Adapter<CheckListAdapter.CheckListItem>() {
+class CheckListAdapter(val listener: CheckListFragment,) : RecyclerView.Adapter<CheckListAdapter.CheckListItem>() {
 
     var items: List<CheckListModel> = listOf()
     set(value){
@@ -23,6 +24,9 @@ class CheckListAdapter(val listener: CheckListFragment) : RecyclerView.Adapter<C
     }
 
     override fun onBindViewHolder(holder: CheckListItem, position: Int) {
+        holder.itemView.setOnClickListener{
+            listener.onClick(items[position])
+        }
         holder.bind(items[position])
     }
 
@@ -35,11 +39,16 @@ class CheckListAdapter(val listener: CheckListFragment) : RecyclerView.Adapter<C
         var checkListDesc = itemView.findViewById<TextView>(R.id.description)
         var checkListResult = itemView.findViewById<TextView>(R.id.result)
         var checkListCount = itemView.findViewById<TextView>(R.id.count)
+        var deleteBtn = itemView.findViewById<Button>(R.id.testDelete)
+
         fun bind(item: CheckListModel) {
             checkListName.text = item.checkListName
             checkListDesc.text = item.description
-            checkListResult.text = "Результат ${item.checkListResult.toString()}/100"
-            checkListCount.text = "Пройдено 0/${item.checkListCount.toString()}"
+            checkListResult.text = "Результат ${item.checkListResult}/100"
+            checkListCount.text = "Пройдено 0/${item.checkListCount}"
+            deleteBtn.setOnClickListener{
+                listener.deleteCheckList(item)
+            }
         }
     }
 }
