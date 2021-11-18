@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.mainproject.R
+import com.example.mainproject.data.db.relations.CheckListWithCheckListModel
 import com.example.mainproject.data.model.CheckListModel
 import com.example.mainproject.domain.callback.AdapterCallBack
 import com.example.mainproject.presentation.addchecklistpage.AddCheckListActivity
@@ -41,10 +42,10 @@ class CheckListFragment : Fragment(),AdapterCallBack{
         }
     }
 
-    override fun onClick(model: CheckListModel) {
+    override fun onClick(model: CheckListWithCheckListModel) {
 
     }
-    override fun deleteCheckList(model:CheckListModel){
+    override fun deleteCheckList(model:CheckListWithCheckListModel){
         val vm by viewModel<CheckListViewModel>()
         vm.deleteCheckList(model)
     }

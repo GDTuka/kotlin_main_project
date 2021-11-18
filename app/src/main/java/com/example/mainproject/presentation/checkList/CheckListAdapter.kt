@@ -7,11 +7,12 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mainproject.R
+import com.example.mainproject.data.db.relations.CheckListWithCheckListModel
 import com.example.mainproject.data.model.CheckListModel
 
 class CheckListAdapter(val listener: CheckListFragment,) : RecyclerView.Adapter<CheckListAdapter.CheckListItem>() {
 
-    var items: List<CheckListModel> = listOf()
+    var items: List<CheckListWithCheckListModel> = listOf()
     set(value){
         field = value
         notifyDataSetChanged()
@@ -41,11 +42,11 @@ class CheckListAdapter(val listener: CheckListFragment,) : RecyclerView.Adapter<
         var checkListCount = itemView.findViewById<TextView>(R.id.count)
         var deleteBtn = itemView.findViewById<Button>(R.id.testDelete)
 
-        fun bind(item: CheckListModel) {
-            checkListName.text = item.checkListName
-            checkListDesc.text = item.description
-            checkListResult.text = "Результат ${item.checkListResult}/100"
-            checkListCount.text = "Пройдено 0/${item.checkListCount}"
+        fun bind(item: CheckListWithCheckListModel) {
+            checkListName.text = item.CheckList.checkListName
+            checkListDesc.text = item.CheckList.description
+            checkListResult.text = "Результат ${item.CheckList.checkListResult}/100"
+            checkListCount.text = "Пройдено 0/${item.CheckList.checkListCount}"
             deleteBtn.setOnClickListener{
                 listener.deleteCheckList(item)
             }

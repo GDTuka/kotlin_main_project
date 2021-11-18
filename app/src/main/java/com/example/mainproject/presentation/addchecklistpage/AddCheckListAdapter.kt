@@ -6,12 +6,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mainproject.R
+import com.example.mainproject.data.db.relations.CheckListWithCheckListModel
 import com.example.mainproject.data.model.CheckListModel
 
 class AddCheckListAdapter(val listener: AddCheckListCallBack): RecyclerView.Adapter<AddCheckListAdapter.AddCheckListItem>() {
 
 
-    var items: List<CheckListModel> = listOf()
+    var items: List<CheckListWithCheckListModel> = listOf()
         set(value){
             field = value
             notifyDataSetChanged()
@@ -36,8 +37,8 @@ class AddCheckListAdapter(val listener: AddCheckListCallBack): RecyclerView.Adap
     class AddCheckListItem(itemView: View): RecyclerView.ViewHolder(itemView){
 
         var textView = itemView.findViewById<TextView>(R.id.checkListName)
-        fun bind(model: CheckListModel){
-            textView.text = model.checkListName
+        fun bind(model: CheckListWithCheckListModel){
+            textView.text = model.CheckList.checkListName
         }
     }
 }
