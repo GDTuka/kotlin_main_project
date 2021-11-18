@@ -10,7 +10,7 @@ import com.example.mainproject.domain.dbdata.CheckListModelDBDao
 @Database(entities = [CheckListModel::class],version = 1,exportSchema = false)
 abstract class CheckListDB : RoomDatabase() {
 
-    abstract fun CheckListDBDao():CheckListModelDBDao
+    abstract fun checkListDBDao():CheckListModelDBDao
 
     companion object {
 
