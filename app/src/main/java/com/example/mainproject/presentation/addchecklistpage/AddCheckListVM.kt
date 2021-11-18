@@ -14,31 +14,32 @@ import kotlinx.coroutines.launch
 class AddCheckListVM (private val database: CheckListModelDBDao): ViewModel() {
 
     private var doorCheckListModel = CheckListModel("Дверь",0,0,"4321")
-    private val doorCheckListPoint1 = CheckListPoints(false,"1",false)
-    private val doorCheckListPoint2 = CheckListPoints(false,"2",false)
+    private val doorCheckListPoint1 = CheckListPoints(false,"1",false,doorCheckListModel.checkListModelID)
+    private val doorCheckListPoint2 = CheckListPoints(false,"2",false,doorCheckListModel.checkListModelID)
     private var doorListOfCheckListPoints = listOf<CheckListPoints>(doorCheckListPoint1,doorCheckListPoint2)
-    private val  door = CheckListWithCheckListModel(doorCheckListModel,doorListOfCheckListPoints)
 
     private var windowCheckListModel = CheckListModel("Окно",0,0,"4321")
-    private var windowCheckListPoint1 = CheckListPoints(false,"1",false)
-    private var windowCheckListPoint2 = CheckListPoints(false,"1",false)
+    private var windowCheckListPoint1 = CheckListPoints(false,"1",false,windowCheckListModel.checkListModelID)
+    private var windowCheckListPoint2 = CheckListPoints(false,"1",false,windowCheckListModel.checkListModelID)
     private var windowListOfCheckListPoints = listOf<CheckListPoints>(windowCheckListPoint1,windowCheckListPoint2)
-    private val window = CheckListWithCheckListModel(windowCheckListModel,windowListOfCheckListPoints)
 
-    var checkLists = MutableLiveData<List<CheckListWithCheckListModel>>().apply {
-        value = listOf(door,window)
+    var checkLists = MutableLiveData<List<CheckListModel>>().apply {
+        value = listOf(doorCheckListModel,windowCheckListModel)
     }
 
     fun addCheckList(name: String){
         viewModelScope.launch(Dispatchers.IO) {
             when (name) {
-                "Дверь" -> insert(door)
-                "Окно" -> insert(window)
+                "Дверь" -> insert(doorCheckListModel,doorListOfCheckListPoints)
+                "Окно" -> insert(windowCheckListModel,windowListOfCheckListPoints)
             }
         }
     }
 
-    private suspend fun insert(checkList: CheckListWithCheckListModel){
-        database.insert(checkList)
+    private suspend fun insert(checkList: CheckListModel, checkListPoints: List<CheckListPoints>){
+        database.insertCheckList(checkList)
+        for(checkListPoint in checkListPoints){
+            database.insertCheckListPoint(checkListPoint)
+        }
     }
 }

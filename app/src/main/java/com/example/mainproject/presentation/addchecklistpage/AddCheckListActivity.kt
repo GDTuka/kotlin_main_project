@@ -24,9 +24,9 @@ class AddCheckListActivity: AppCompatActivity(), AddCheckListCallBack {
 
     }
 
-    override fun addCheckList(model: CheckListWithCheckListModel) {
+    override fun addCheckList(model: CheckListModel) {
         val vm by viewModel<AddCheckListVM>()
-        vm.addCheckList(model.CheckList.checkListName)
+        vm.addCheckList(model.checkListName)
         finish()
     }
 }

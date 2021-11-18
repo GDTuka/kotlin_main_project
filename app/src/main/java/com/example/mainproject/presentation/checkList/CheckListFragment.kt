@@ -47,6 +47,5 @@ class CheckListFragment : Fragment(),AdapterCallBack{
     }
     override fun deleteCheckList(model:CheckListWithCheckListModel){
         val vm by viewModel<CheckListViewModel>()
-        vm.deleteCheckList(model)
     }
 }

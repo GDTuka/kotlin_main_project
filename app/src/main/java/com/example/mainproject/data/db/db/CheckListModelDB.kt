@@ -4,10 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.mainproject.data.db.entitys.CheckListPoints
 import com.example.mainproject.data.model.CheckListModel
 import com.example.mainproject.domain.dbdata.CheckListModelDBDao
 
-@Database(entities = [CheckListModel::class],version = 1,exportSchema = false)
+@Database(entities = [CheckListModel::class,CheckListPoints::class],version = 2,exportSchema = false)
 abstract class CheckListDB : RoomDatabase() {
 
     abstract fun checkListDBDao():CheckListModelDBDao
@@ -23,7 +24,8 @@ abstract class CheckListDB : RoomDatabase() {
             }
         }
         private fun buildDatabase(context: Context): CheckListDB{
-            return Room.databaseBuilder(context,CheckListDB::class.java,"check_list_model").build()
+            return Room.databaseBuilder(context,CheckListDB::class.java,"check_list_model").fallbackToDestructiveMigration().build()
         }
     }
 }
+
