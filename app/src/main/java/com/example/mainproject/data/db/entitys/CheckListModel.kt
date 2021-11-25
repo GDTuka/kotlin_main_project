@@ -1,8 +1,6 @@
 package com.example.mainproject.data.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 import com.example.mainproject.data.db.entitys.CheckListPoints
 import java.io.Serializable
 

@@ -7,8 +7,10 @@
         <entry key="..\:/kotlin/MainProject/app/src/main/res/layout/activity_main.xml" value="0.370018115942029" />
         <entry key="..\:/kotlin/MainProject/app/src/main/res/layout/fragment_add_check_list.xml" value="0.370018115942029" />
         <entry key="..\:/kotlin/MainProject/app/src/main/res/layout/fragment_checklist.xml" value="0.328125" />
+        <entry key="..\:/kotlin/MainProject/app/src/main/res/layout/fragment_main_check_list_page.xml" value="0.328804347826087" />
         <entry key="..\:/kotlin/MainProject/app/src/main/res/layout/item_add_checklist_recycler.xml" value="0.29791666666666666" />
         <entry key="..\:/kotlin/MainProject/app/src/main/res/layout/item_checklist.xml" value="0.33" />
+        <entry key="..\:/kotlin/MainProject/app/src/main/res/layout/main_ckeck_list_page_item.xml" value="0.328804347826087" />
       </map>
     </option>
   </component>

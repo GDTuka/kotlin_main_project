@@ -6,5 +6,5 @@ import com.example.mainproject.data.model.CheckListModel
 interface AdapterCallBack {
     fun onClick(model: CheckListWithCheckListModel)
 
-    fun deleteCheckList(model: CheckListWithCheckListModel)
+    fun deleteCheckList(model: CheckListModel)
 }

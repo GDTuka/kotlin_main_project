@@ -12,7 +12,7 @@ import com.example.mainproject.data.model.CheckListModel
 class AddCheckListAdapter(val listener: AddCheckListCallBack): RecyclerView.Adapter<AddCheckListAdapter.AddCheckListItem>() {
 
 
-    var items: List<CheckListWithCheckListModel> = listOf()
+    var items: List<CheckListModel> = listOf()
         set(value){
             field = value
             notifyDataSetChanged()
@@ -37,8 +37,8 @@ class AddCheckListAdapter(val listener: AddCheckListCallBack): RecyclerView.Adap
     class AddCheckListItem(itemView: View): RecyclerView.ViewHolder(itemView){
 
         var textView = itemView.findViewById<TextView>(R.id.checkListName)
-        fun bind(model: CheckListWithCheckListModel){
-            textView.text = model.CheckList.checkListName
+        fun bind(model: CheckListModel){
+            textView.text = model.checkListName
         }
     }
 }
