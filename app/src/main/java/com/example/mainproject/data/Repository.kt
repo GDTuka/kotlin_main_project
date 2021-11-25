@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 
 class Repository (private val checkListDao: CheckListModelDBDao){
 
-    val allCheckList: Flow<List<CheckListWithCheckListModel>> = checkListDao.getEverything()
+    val allCheckList: Flow<MutableList<CheckListWithCheckListModel>> = checkListDao.getEverything()
 
 
 

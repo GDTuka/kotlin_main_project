@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 class CheckListViewModel(private val database: CheckListModelDBDao,private val repository: Repository): ViewModel() {
 
-    val checkLists : LiveData<List<CheckListWithCheckListModel>> = repository.allCheckList.asLiveData()
+    val checkLists : LiveData<MutableList<CheckListWithCheckListModel>> = repository.allCheckList.asLiveData()
 
     fun deleteCheckList(model:CheckListModel){
         viewModelScope.launch(Dispatchers.IO) {

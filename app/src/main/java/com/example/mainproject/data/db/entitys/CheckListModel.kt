@@ -7,13 +7,13 @@ import java.io.Serializable
 @Entity(tableName = "check_list_model")
 data class CheckListModel (
     @ColumnInfo(name = "check_list_name")
-    val checkListName: String,
+    var checkListName: String,
     @ColumnInfo(name = "check_list_count")
-    val checkListCount: Int,
+    var checkListCount: Int,
     @ColumnInfo(name = "check_list_result")
-    val checkListResult: Int,
+    var checkListResult: Int,
     @ColumnInfo(name = "description")
-    val description: String,
+    var description: String,
     @PrimaryKey(autoGenerate = true)
-    val checkListModelID: Long = 0L
+    var checkListModelID: Long = 0L
         ) : Serializable

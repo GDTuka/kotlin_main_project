@@ -20,8 +20,8 @@ interface CheckListModelDBDao {
     fun deleteCheckList(checkList: CheckListModel)
 
     @Transaction
-    @Query("SELECT * FROM check_list_model " )
-    fun getEverything(): Flow<List<CheckListWithCheckListModel>>
+    @Query("SELECT * FROM check_list_model" )
+    fun getEverything(): Flow<MutableList<CheckListWithCheckListModel>>
 
     @Update
     fun updateCorrectly(checkListPoints: CheckListPoints)
