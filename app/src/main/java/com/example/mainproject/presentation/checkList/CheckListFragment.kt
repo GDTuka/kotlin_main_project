@@ -12,6 +12,7 @@ import com.example.mainproject.data.db.relations.CheckListWithCheckListModel
 import com.example.mainproject.data.model.CheckListModel
 import com.example.mainproject.domain.callback.AdapterCallBack
 import com.example.mainproject.presentation.addchecklistpage.AddCheckListActivity
+import com.example.mainproject.presentation.mainchecklistpage.MainCheckListPageFragment
 import kotlinx.android.synthetic.main.fragment_checklist.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -43,9 +44,15 @@ class CheckListFragment : Fragment(),AdapterCallBack{
     }
 
     override fun onClick(model: CheckListWithCheckListModel) {
+        var bundle = Bundle()
+        var fragment = MainCheckListPageFragment()
+        bundle.putSerializable("checkList", model)
+        fragment.arguments = bundle
+        parentFragmentManager.beginTransaction().replace(R.id.container,fragment).commit()
 
     }
-    override fun deleteCheckList(model:CheckListWithCheckListModel){
+    override fun deleteCheckList(model: CheckListModel) {
         val vm by viewModel<CheckListViewModel>()
+        vm.deleteCheckList(model)
     }
 }

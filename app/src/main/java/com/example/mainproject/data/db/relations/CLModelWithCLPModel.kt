@@ -3,6 +3,7 @@ package com.example.mainproject.data.db.relations
 import androidx.room.*
 import com.example.mainproject.data.db.entitys.CheckListPoints
 import com.example.mainproject.data.model.CheckListModel
+import java.io.Serializable
 
 
 data class CheckListWithCheckListModel(
@@ -12,7 +13,7 @@ data class CheckListWithCheckListModel(
         entityColumn = "checkListColumnID"
     )
     val checkListPoints: List<CheckListPoints>
-)
+) : Serializable
 
 
 

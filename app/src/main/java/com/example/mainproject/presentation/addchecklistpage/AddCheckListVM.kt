@@ -37,9 +37,9 @@ class AddCheckListVM (private val database: CheckListModelDBDao): ViewModel() {
     }
 
     private suspend fun insert(checkList: CheckListModel, checkListPoints: List<CheckListPoints>){
-        database.insertCheckList(checkList)
+        var id = database.insertCheckList(checkList)
         for(checkListPoint in checkListPoints){
-            database.insertCheckListPoint(checkListPoint)
+            database.insertCheckListPoint(checkListPoint.copy(checkListColumnID = id))
         }
     }
 }

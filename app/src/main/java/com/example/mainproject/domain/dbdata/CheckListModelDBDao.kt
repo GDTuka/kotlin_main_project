@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 interface CheckListModelDBDao {
 
     @Insert
-    fun insertCheckList(data:CheckListModel)
+    fun insertCheckList(data:CheckListModel): Long
 
     @Insert
     fun insertCheckListPoint(vararg data:CheckListPoints)
@@ -22,4 +22,7 @@ interface CheckListModelDBDao {
     @Transaction
     @Query("SELECT * FROM check_list_model " )
     fun getEverything(): Flow<List<CheckListWithCheckListModel>>
+
+    @Update
+    fun updateCorrectly(checkListPoints: CheckListPoints)
 }

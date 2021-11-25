@@ -8,7 +8,7 @@ import com.example.mainproject.data.db.entitys.CheckListPoints
 import com.example.mainproject.data.model.CheckListModel
 import com.example.mainproject.domain.dbdata.CheckListModelDBDao
 
-@Database(entities = [CheckListModel::class,CheckListPoints::class],version = 2,exportSchema = false)
+@Database(entities = [CheckListModel::class,CheckListPoints::class],version = 4,exportSchema = false)
 abstract class CheckListDB : RoomDatabase() {
 
     abstract fun checkListDBDao():CheckListModelDBDao

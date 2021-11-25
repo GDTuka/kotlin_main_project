@@ -48,7 +48,7 @@ class CheckListAdapter(val listener: CheckListFragment,) : RecyclerView.Adapter<
             checkListResult.text = "Результат ${item.CheckList.checkListResult}/100"
             checkListCount.text = "Пройдено 0/${item.CheckList.checkListCount}"
             deleteBtn.setOnClickListener{
-                listener.deleteCheckList(item)
+                listener.deleteCheckList(item.CheckList)
             }
         }
     }
